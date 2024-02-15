@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Bob",
+        "fav_coffee": "cappuccino",
+        "cost": 4.0,
+        "expected": 20.0,
+        "paid": 24.0,
+        "fairness": 4.0
+    },
+    {
+        "name": "Jeremy",
+        "fav_coffee": "black coffee",
+        "cost": 2.0,
+        "expected": 10.0,
+        "paid": 0.0,
+        "fairness": -10.0
+    },
+    {
+        "name": "Alice",
+        "fav_coffee": "cold brew",
+        "cost": 5.0,
+        "expected": 25.0,
+        "paid": 24.0,
+        "fairness": -1.0
+    },
+    {
+        "name": "Carol",
+        "fav_coffee": "affogato",
+        "cost": 6.0,
+        "expected": 30.0,
+        "paid": 24.0,
+        "fairness": -6.0
+    },
+    {
+        "name": "Dave",
+        "fav_coffee": "mocha",
+        "cost": 3.0,
+        "expected": 15.0,
+        "paid": 24.0,
+        "fairness": 9.0
+    },
+    {
+        "name": "Eddie",
+        "fav_coffee": "americano",
+        "cost": 3.0,
+        "expected": 15.0,
+        "paid": 24.0,
+        "fairness": -15.0
+    },
+    {
+        "name": "Francine",
+        "fav_coffee": "cold brew",
+        "cost": 1.0,
+        "expected": 5.0,
+        "paid": 0.0,
+        "fairness": -5.0
+    }
+]

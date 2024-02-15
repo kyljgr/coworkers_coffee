@@ -9,13 +9,13 @@ def load_coworkers(input_json):
     except FileNotFoundError:
         print(f"File not found or no file provided, using default settings.")
         return [
-            {"name": "Bob", "fav_coffee" : "cappuccino", "cost" : 4.40, "expected" : 0.0, "paid" : 0, "fairness" : 0.0},
-            {"name": "Jeremy", "fav_coffee" : "black coffee", "cost" : 2.70,"expected" : 0.0,  "paid" :0, "fairness" : 0.0},
-            {"name": "Alice", "fav_coffee" : "cold brew", "cost" : 5.00, "expected" : 0.0, "paid" : 0, "fairness" : 0.0},
-            {"name": "Carol", "fav_coffee" : "affogato", "cost" : 6.00, "expected" : 0.0, "paid" : 0, "fairness" : 0.0},
-            {"name": "Dave", "fav_coffee" : "mocha", "cost" : 3.90, "expected" : 0.0, "paid" : 0, "fairness" : 0.0},
-            {"name": "Eddie", "fav_coffee" : "americano", "cost" : 3.20, "expected" : 0.0, "paid" : 0, "fairness" : 0.0},
-            {"name": "Francine", "fav_coffee" : "cold brew", "cost" : 2.70, "expected" : 0.0, "paid" : 0, "fairness" : 0.0}
+            {"name": "Bob", "fav_coffee" : "cappuccino", "cost" : 4.00, "expected" : 0.0, "paid" : 0.00, "fairness" : 0.00},
+            {"name": "Jeremy", "fav_coffee" : "black coffee", "cost" : 2.00,"expected" : 0.0,  "paid" : 0.00, "fairness" : 0.00},
+            {"name": "Alice", "fav_coffee" : "cold brew", "cost" : 5.00, "expected" : 0.0, "paid" : 0.00, "fairness" : 0.00},
+            {"name": "Carol", "fav_coffee" : "affogato", "cost" : 6.00, "expected" : 0.0, "paid" : 0.00, "fairness" : 0.00},
+            {"name": "Dave", "fav_coffee" : "mocha", "cost" : 3.00, "expected" : 0.0, "paid" : 0.00, "fairness" : 0.00},
+            {"name": "Eddie", "fav_coffee" : "americano", "cost" : 3.00, "expected" : 0.0, "paid" : 0.00, "fairness" : 0.00},
+            {"name": "Francine", "fav_coffee" : "cold brew", "cost" : 1.00, "expected" : 0.0, "paid" : 0.00, "fairness" : 0.00}
         ]
 
 def calculate_expected_payments(coworkers):
@@ -25,10 +25,10 @@ def calculate_expected_payments(coworkers):
     total_rounds = (sum(coworker["paid"] for coworker in coworkers) / (average_cost * len(coworkers))) + 1
     
     for coworker in coworkers:
-        ''' 
-            Calculate each coworker's expected total contribution
-            Expected contribution is just how much their coffee is * how many times they've gone to get coffee
-            How much would they be spending if they just payed for themselves?
+        '''
+        Calculate each coworker's expected total contribution
+        Expected contribution is just how much their coffee is * how many times they've gone to get coffee
+        How much would they be spending if they just payed for themselves?
         '''
         expected_payment = total_rounds * coworker["cost"]
         coworker["expected"] = expected_payment
@@ -63,6 +63,15 @@ def main():
         input_json = "default.json"
     
     coworkers = load_coworkers(input_json)
+
+    change_preference = input("Do you want to change the favorite coffee and cost fields for any coworkers? [y/n] ")
+    if change_preference.lower() == "y":
+        coworker_name = input("Enter the name of the coworker you want to update: ")
+        for coworker in coworkers:
+            if coworker["name"] == coworker_name:
+                coworker["fav_coffee"] = input(f"Enter the new favorite coffee for {coworker['name']}: ")
+                coworker["cost"] = float(input(f"Enter the new cost for {coworker['name']}'s coffee: "))
+                break
 
     payer_name = find_next_payer(coworkers)
     print(f"{payer_name} should pay for the coffee this time.")
